@@ -1,15 +1,40 @@
 {
-  "name": "node-express-hello-world",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "ejs": "^2.3.4",
-    "express": "^4.13.3"
+
+    "name": "real-estate",
+  
+    "type": "module",
+  
+    "version": "1.0.0",
+  
+    "description": "A simple and clean layout for a real estate index website",
+  
+    "main": "index.js",
+  
+    "scripts": {
+  
+      "start": "node app.js",
+  
+      "build": "npm run build"
+  
+    },
+  
+    "author": "Wendy Teo",
+  
+    "license": "ISC",
+  
+    "devDependencies": {
+  
+      "nodemon": "^3.0.1"
+  
+    },
+  
+    "dependencies": {
+  
+      "ejs": "^3.1.9",
+  
+      "express": "^4.18.2"
+  
+    }
+  
   }
-}
+   
