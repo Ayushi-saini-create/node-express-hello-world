@@ -1,16 +1,46 @@
-var express=require('express');
-var app=express();
+import express from 'express';
 
-var routes=require('./routes/route.js');
+import path from 'path';
 
-app.set('view engine','ejs');
+import { fileURLToPath } from 'url';
+ 
+import regionsRouter from './routes/regions.js';
 
-app.use(express.static(__dirname + '/public'));
+import locationRouter from './routes/location.js';
 
-app.get('/',routes.home);
+import amenitiesRouter from './routes/amenities.js';
+ 
+const __filename = fileURLToPath(import.meta.url); 
 
-var port = process.env.PORT || 3000;
+const __dirname = path.dirname(__filename);  
+ 
+const app = express();
 
-var server=app.listen(port,function(req,res){
-    console.log("Catch the action at http://localhost:"+port);
+const PORT = 3000;
+ 
+app.set('view engine', 'ejs'); 
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.urlencoded({extended: false}));
+ 
+app.use(regionsRouter);
+
+app.use(locationRouter);
+
+app.use(amenitiesRouter);
+ 
+app.use((req, res) => {
+
+    res.status(404);
+
+    res.render(path.join(__dirname, 'views', '404.ejs'));
+
 });
+ 
+app.listen(PORT, () => {
+
+    console.log(`Server is running on http://localhost:${PORT}`);
+
+});
+ 
